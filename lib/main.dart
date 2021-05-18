@@ -27,7 +27,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
@@ -45,9 +45,19 @@ class MyHomePage extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2)),
+                      border: Border.all(
+                    color: Colors.purple,
+                    width: 2,
+                  )),
                   padding: EdgeInsets.all(10),
-                  child: Text(tx.amount.toString()),
+                  child: Text(
+                    tx.amount.toString(),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.green,
+                    ),
+                  ),
                 ),
                 Column(
                   children: [Text(tx.title), Text(tx.date.toString())],
