@@ -1,5 +1,6 @@
+import './widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
-import 'transaction.dart';
+import './widgets/new_transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,12 +15,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transactions = [
-    Transaction(
-        id: 'trans1', title: 'Eggs', amount: 120.0, date: DateTime.now()),
-    Transaction(
-        id: 'trans2', title: 'mango', amount: 90.0, date: DateTime.now())
-  ];
+  // String titleInput;
+  // String amountInput;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +25,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
@@ -38,33 +36,8 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          Column(
-              children: transactions.map((tx) {
-            return Card(
-              child: Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                    color: Colors.purple,
-                    width: 2,
-                  )),
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    tx.amount.toString(),
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.green,
-                    ),
-                  ),
-                ),
-                Column(
-                  children: [Text(tx.title), Text(tx.date.toString())],
-                )
-              ]),
-            );
-          }).toList()),
+          NewTransaction(),
+          TransactionList()
         ],
       ),
     );
