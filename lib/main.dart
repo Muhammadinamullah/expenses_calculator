@@ -1,6 +1,6 @@
-import './widgets/transaction_list.dart';
+import 'package:expanses_calculator_app/widgets/user_transaction.dart';
 import 'package:flutter/material.dart';
-import './widgets/new_transaction.dart';
+//import './widgets/new_transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,21 +24,22 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Flutter App'),
       ),
-      body: Column(
-        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            width: double.infinity,
-            child: Card(
-              color: Colors.blue,
-              child: Text('CHART!'),
-              elevation: 5,
+      body: SingleChildScrollView(
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              width: double.infinity,
+              child: Card(
+                color: Colors.blue,
+                child: Text('CHART!'),
+                elevation: 5,
+              ),
             ),
-          ),
-          NewTransaction(),
-          TransactionList()
-        ],
+            UserTranaction()
+          ],
+        ),
       ),
     );
   }
