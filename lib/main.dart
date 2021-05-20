@@ -1,3 +1,4 @@
+import './widgets/chart.dart';
 import 'package:flutter/material.dart';
 
 import './widgets/new_transaction.dart';
@@ -39,12 +40,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _userTransactions = [
-    // Transaction(
-    //     id: 'trans1', title: 'Eggs', amount: 65.0, date: DateTime.now()),
-    // Transaction(
-    //     id: 'trans2', title: 'New dress', amount: 90.0, date: DateTime.now()),
-  ];
+  final List<Transaction> _userTransactions = [];
+  List<Transaction> get _recentTransactions {
+    /*if (_recentTransactions.length == 0) return _recentTransactions;
+    else*/
+    return _userTransactions.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
 
   void _addNewTransaction(String txTitle, double txAmount) {
     final newTx = Transaction(
@@ -88,21 +95,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                child: Text('CHART!'),
-                elevation: 5,
-              ),
-            ),
-            TransactionList(_userTransactions),
-          ],
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Chart(_recentTransactions),
+              TransactionList(_userTransactions),
+            ],
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
