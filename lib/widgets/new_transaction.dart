@@ -49,10 +49,10 @@ class _NewTransactionState extends State<NewTransaction> {
               onSubmitted: (_) => submitData(),
               //onChanged: (value) => amountInput = value,
             ),
-            FlatButton(
+            TextButton(
               onPressed: submitData,
-              child: Text('Add Transaction'),
-              color: Colors.blue,
+              child: Text('Add'),
+              //Color: Colors.blue,
             ),
           ],
         ),
