@@ -1,12 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:expanses_calculator_app/widgets/user_transaction.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   final Function addTx;
+
+  NewTransaction(this.addTx);
+
+  @override
+  _NewTransactionState createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
-  NewTransaction(this.addTx);
+  void submitData() {
+    final enteredTitle = titleController.text;
+    final enteredAmount = double.parse(amountController.text);
+    //widget.addTx(titleController.text, double.parse(amountController.text));
+
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      return;
+    }
+    widget.addTx(enteredTitle, enteredAmount);
+
+    //when add the transaction the bottom sheet will close automatically
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +39,20 @@ class NewTransaction extends StatelessWidget {
             TextField(
               decoration: InputDecoration(labelText: 'Title'),
               controller: titleController,
+
               //onChanged: (value) => titleInput = value,
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
               controller: amountController,
+              keyboardType: TextInputType.number,
+              onSubmitted: (_) => submitData(),
               //onChanged: (value) => amountInput = value,
             ),
             FlatButton(
-              onPressed: () {
-                addTx(
-                    titleController.text, double.parse(amountController.text));
-                // print(amountInput);
-                // print(titleInput);
-              },
+              onPressed: submitData,
               child: Text('Add Transaction'),
-              textColor: Colors.purple,
+              color: Colors.blue,
             ),
           ],
         ),
