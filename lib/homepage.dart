@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
-      isScrollControlled: true,
+      // isScrollControlled: true,
       context: ctx,
       builder: (_) {
         return GestureDetector(
@@ -78,13 +78,15 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         child: SingleChildScrollView(
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Chart(_recentTransactions),
-              TransactionList(_userTransactions, _deleteTransaction),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Chart(_recentTransactions),
+                TransactionList(_userTransactions, _deleteTransaction),
+              ],
+            ),
           ),
         ),
       ),
