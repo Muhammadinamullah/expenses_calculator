@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
                   headline6: TextStyle(
                       fontFamily: 'OpenSans',
                       fontSize: 20,
-                      fontWeight: FontWeight.bold)))),
+                      fontWeight: FontWeight.bold),
+                  button: TextStyle(color: Colors.white)))),
       home: MyHomePage(),
     );
   }
