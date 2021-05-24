@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //IOS code for add button
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
-            middle: Text('Personal Expenses App'),
+            middle: const Text('Personal Expenses App'),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         : AppBar(
             // backgroundColor: Colors.red
-            title: Text(
+            title: const Text(
               'Personal Expenses App',
               style: TextStyle(fontFamily: 'Open Sans'),
             ),

@@ -7,7 +7,7 @@ class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
   final Function deleteTx;
 
-  TransactionList(this.transactions, this.deleteTx);
+  const TransactionList(this.transactions, this.deleteTx);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class TransactionList extends StatelessWidget {
                   leading: CircleAvatar(
                     radius: 30,
                     child: Padding(
-                        padding: EdgeInsets.all(6),
+                        padding: const EdgeInsets.all(6),
                         child: Text('\$${transactions[index].amount}')),
                   ),
                   title: Text(
@@ -49,8 +49,8 @@ class TransactionList extends StatelessWidget {
                       Text(DateFormat.yMMMd().format(transactions[index].date)),
                   trailing: MediaQuery.of(context).size.width > 460
                       ? FlatButton.icon(
-                          icon: Icon(Icons.delete),
-                          label: Text("Delete"),
+                          icon: const Icon(Icons.delete),
+                          label: const Text("Delete"),
                           textColor: Colors.red,
 
                           onPressed: () => deleteTx(transactions[index].id),
